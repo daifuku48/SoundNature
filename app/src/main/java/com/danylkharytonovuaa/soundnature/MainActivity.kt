@@ -26,7 +26,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = RecAdapter(array)
         adapter.setOnItemClickListener(object: RecAdapter.OnItemClickListener{
             override fun onClickItem(position: Int) {
-                val intent = Intent()
+                val intent = Intent(this@MainActivity, SecondActivity::class.java).apply {
+                    putExtra("audio", array[position].audio)
+                    putExtra("image", array[position].image_intent)
+                }
+                startActivity(intent)
             }
 
         })
